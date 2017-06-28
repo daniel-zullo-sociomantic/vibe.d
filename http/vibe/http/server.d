@@ -531,13 +531,13 @@ final class HTTPServerSettings {
 
 		The default limit of 0 means that the request time is not limited.
 	*/
-	Duration maxRequestTime;// = dur!"seconds"(0);
+	Duration maxRequestTime = dur!"seconds"(0);
 
 	/** Maximum time between two request on a keep-alive connection
 
 		The default value is 10 seconds.
 	*/
-	Duration keepAliveTimeout;// = dur!"seconds"(10);
+	Duration keepAliveTimeout = dur!"seconds"(10);
 
 	/// Maximum number of transferred bytes per request after which the connection is closed with
 	/// an error
@@ -623,14 +623,10 @@ final class HTTPServerSettings {
 
 		The default value is 60 seconds; set to Duration.zero to disable pings.
 	*/
-	Duration webSocketPingInterval;// = dur!"seconds"(60);
+	Duration webSocketPingInterval = dur!"seconds"(60);
 
 	this()
 	@safe {
-		// need to use the contructor because the Ubuntu 13.10 GDC cannot CTFE dur()
-		maxRequestTime = 0.seconds;
-		keepAliveTimeout = 10.seconds;
-		webSocketPingInterval = 60.seconds;
 	}
 }
 
